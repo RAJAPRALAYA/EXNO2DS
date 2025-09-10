@@ -142,6 +142,19 @@ sns.pairplot(df)
 
 ![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/56f6f7a3-7ea7-455c-bb53-88fe6cded9e4)
 
+ # Summary
+Dataset Structure: Titanic dataset contains passenger details (Age, Gender, Class, Fare, Survival, etc.).
 
+Survival Rate: Around 38% survived and 62% did not survive.
+
+Gender Effect: Women had much higher survival rates than men (due to "women and children first" policy).
+
+Class Effect: First-class passengers had much better survival chances compared to 3rd class.
+
+Age Effect: Younger passengers (especially children) were more likely to survive.
+
+Fare Effect: Higher fare (wealthier passengers) correlated with better survival.
+
+Correlation Analysis: Survival is linked with Gender, Pclass, and Fare.
 # RESULT
 Thus, the Exploratory Data Analysis on the given data set was performed successfully.
