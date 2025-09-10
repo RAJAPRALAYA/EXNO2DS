@@ -1,7 +1,6 @@
 # EXNO2DS
 # AIM:
-
-To perform Exploratory Data Analysis on the given data set.
+      To perform Exploratory Data Analysis on the given data set.
       
 # EXPLANATION:
   The primary aim with exploratory analysis is to examine the data for distribution, outliers and anomalies to direct specific testing of your hypothesis.
@@ -24,23 +23,125 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
 ## CODING AND OUTPUT
-<img width="1446" height="633" alt="image" src="https://github.com/user-attachments/assets/c22a0a90-2dc1-43a7-8bd6-e71be839f129" />
-<img width="1471" height="719" alt="image" src="https://github.com/user-attachments/assets/2cece56a-042d-4a00-aa7c-faa7c6c7d26a" />
-<img width="1490" height="706" alt="image" src="https://github.com/user-attachments/assets/d85231a2-ccef-4e90-a8e9-729c32603578" />
-<img width="1492" height="728" alt="image" src="https://github.com/user-attachments/assets/660e1779-d18e-43b9-8084-862a66b43eff" />
-<img width="1486" height="646" alt="image" src="https://github.com/user-attachments/assets/ee36cdc5-d7d3-4e72-8edc-1f186df48cf5" />
-<img width="1494" height="660" alt="image" src="https://github.com/user-attachments/assets/79e9bf97-553d-490a-b1e8-a0fab63bf96a" />
-<img width="1485" height="624" alt="image" src="https://github.com/user-attachments/assets/687c4739-fd9d-4fa5-ae88-f03f293369e0" />
-<img width="1481" height="697" alt="image" src="https://github.com/user-attachments/assets/42a35dc1-979a-427f-b304-b93612b5c2de" />
-<img width="1482" height="714" alt="image" src="https://github.com/user-attachments/assets/11396077-8beb-4dcf-aaa8-762cda2c355f" />
-<img width="1481" height="600" alt="image" src="https://github.com/user-attachments/assets/b8ab2eb8-372a-4eaa-80f1-d6bf246343ea" />
-<img width="1483" height="660" alt="image" src="https://github.com/user-attachments/assets/4104f621-a82e-4416-b7ea-4b3b65d5d174" />
-<img width="1483" height="619" alt="image" src="https://github.com/user-attachments/assets/10828474-ec84-4374-9ef8-39b4f0553bd4" />
-<img width="1480" height="627" alt="image" src="https://github.com/user-attachments/assets/f6918034-bdba-4c7f-8bb6-749e2c0edf89" />
-<img width="1326" height="737" alt="image" src="https://github.com/user-attachments/assets/7f22fe95-0e44-454e-b73c-539e482963d5" />
-<img width="1314" height="739" alt="image" src="https://github.com/user-attachments/assets/07be967f-de2c-4932-99ef-43828ddbd866" />
-<img width="736" height="735" alt="image" src="https://github.com/user-attachments/assets/65e1a672-196a-4d95-8041-151b716992e7" />
-<img width="1334" height="567" alt="image" src="https://github.com/user-attachments/assets/d70b2962-90b7-4e12-a7c1-69762f9b1713" />
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("/content/titanic_dataset.csv")
+df
+
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/a21d9a93-4a33-4934-ba70-4ed5fbde3586)
+
+```python
+df.head(10)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/1f149ddb-5dd6-4d44-b0d2-75e86063309b)
+
+```python
+df.tail(10)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/1f37ec5f-3d4a-4457-8920-40702976964f)
+
+```python
+df.info()
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/a55e6e0c-39fe-4a1a-b1f1-35053effe2c4)
+
+```python
+df.describe()
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/90273314-ca4a-42ad-b39c-b3713a5556b1)
+
+```python
+df.shape
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/8dc4fa37-c3e7-44bb-af19-e3e69cdfa319)
+
+```python
+df.set_index("PassengerId",inplace=True)
+df["Survived"].value_counts()
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/f424a0eb-a7a7-4eaf-8380-78ab9ae002b9)
+
+```python
+per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
+per
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/bb91f5e7-88aa-42bb-8763-5737b25ce77c)
+
+```python
+sns.countplot(data=df,x="Survived")
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/7ed67c8d-ef3c-4a89-a2f3-aac8c0b33901)
+
+```python
+df.Pclass.unique()
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/5b6a5044-21b2-48ff-b42d-510f85e0898f)
+
+```python
+df.rename(columns={'Sex':'Gender'},inplace=True)
+df
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/86b4fdb8-76e5-4b7a-8042-b0f8b6436669)
+
+```python
+sns.countplot(data=df,x="Survived")
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/e625d2a9-db10-4d00-8b7f-599745c20cb4)
+
+```python
+sns.catplot(x="Gender",col="Survived",kind="count",data=df,height=5)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/dbacafda-e972-4d2e-ad6d-c8f441bcfcdd)
+
+```python
+sns.catplot(x="Survived",hue="Gender",data=df,kind="count")
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/de6e5f4d-379f-47d8-b281-26ff0f5dbda4)
+
+```python
+df.boxplot(column="Age",by="Survived")
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/524bbd13-0eb6-4dbf-801a-545fa0600c95)
+
+```python
+sns.scatterplot(x=df["Age"],y=df["Fare"])
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/59d868be-ee43-4d94-a12a-abb2e1c5bf0b)
+
+```python
+sns.jointplot(x="Age",y="Fare",data=df)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/dd5fb5cd-7463-4665-bb54-a027d0e2eb2c)
+
+```python
+fig,ax1 = plt.subplots(figsize=(8,5))
+sns.boxplot(ax=ax1, x="Pclass",y="Age",hue="Gender",data=df)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/a83591bf-8dd5-402c-8100-1d74a7394ca8)
+
+```python
+sns.catplot(data=df,col="Survived",x="Gender",hue="Pclass",kind="count")
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/e90edd18-7f23-4b29-bdab-659989d583ab)
+
+```python
+## Co-relation
+corr=df.corr()
+sns.heatmap(corr,annot=True)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/4099fb1c-52d7-4945-a54c-7fee7412b3cf)
+
+```python
+sns.pairplot(df)
+```
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/c2403604-f215-478a-991d-b74e61f86cbd)
+
+![image](https://github.com/varshasharon/EXNO2DS/assets/98278161/56f6f7a3-7ea7-455c-bb53-88fe6cded9e4)
+
 
 # RESULT
-Thus,the Exploratory Data Analysis on the given data set was performed successfully.
+Thus, the Exploratory Data Analysis on the given data set was performed successfully.
